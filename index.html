@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f6ef">
+  <meta name="description" content="Günyurdu Köyü, Tarsus'ta aile çiftliğimizden zeytin, zeytinyağı ve peynir; küçükbaş ve büyükbaş hayvancılık.">
+  <title>Fehmi Tümbül Çiftliği | Topraktan sofranıza</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #f8f6ef;
+      --paper: #fffefa;
+      --olive: #465a36;
+      --olive-deep: #2d4028;
+      --olive-soft: #e8ecdf;
+      --brown: #795b3e;
+      --ink: #253126;
+      --muted: #687064;
+      --line: #e5e4d8;
+      --radius: 1.25rem;
+      --shadow: 0 1.2rem 3rem rgba(48, 57, 39, .08);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+    body { margin: 0; background: var(--cream); color: var(--ink); line-height: 1.65; }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(100% - 2rem, 1160px); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: .55rem; color: var(--olive); font-size: .76rem; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 1.45rem; height: 1px; background: currentColor; }
+    .section { padding-block: 5.25rem; }
+    .section-heading { max-width: 650px; margin: 0 0 2.3rem; }
+    .section-heading h2 { margin: .55rem 0 .8rem; font-family: Georgia, serif; font-size: clamp(2.05rem, 5vw, 3.2rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.1; }
+    .section-heading p { max-width: 560px; margin: 0; color: var(--muted); }
+    .button { display: inline-flex; min-height: 3.15rem; align-items: center; justify-content: center; gap: .6rem; border: 1px solid transparent; border-radius: 999px; padding: .78rem 1.25rem; background: var(--olive); color: white; font-weight: 700; text-decoration: none; transition: background .2s ease, transform .2s ease; cursor: pointer; }
+    .button:hover { background: var(--olive-deep); transform: translateY(-2px); }
+    .button--light { border-color: rgba(255,255,255,.55); background: transparent; color: white; }
+    .button--light:hover { background: rgba(255,255,255,.12); }
+    .button--outline { border-color: var(--line); background: transparent; color: var(--olive-deep); }
+    .button--outline:hover { border-color: var(--olive); background: var(--olive-soft); }
+    .icon { width: 1.15rem; height: 1.15rem; flex: 0 0 auto; }
+    .site-header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid rgba(60, 74, 49, .09); background: rgba(248, 246, 239, .94); backdrop-filter: blur(12px); }
+    .header-inner { display: flex; min-height: 4.65rem; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: inline-flex; align-items: center; gap: .7rem; color: var(--olive-deep); font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+    .brand-mark { display: grid; width: 2.35rem; height: 2.35rem; place-items: center; border-radius: 50%; background: var(--olive); color: white; }
+    .brand-mark svg { width: 1.4rem; height: 1.4rem; }
+    .nav { display: flex; align-items: center; gap: 1.45rem; }
+    .nav a { color: #495347; font-size: .9rem; font-weight: 650; text-decoration: none; }
+    .nav a:hover { color: var(--olive); }
+    .nav .nav-cta { padding: .65rem 1rem; border-radius: 999px; background: var(--olive); color: white; }
+    .menu-toggle { display: none; width: 2.8rem; height: 2.8rem; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--paper); color: var(--olive-deep); cursor: pointer; }
+    .hero { position: relative; overflow: hidden; padding: 4rem 0 4.8rem; background: linear-gradient(115deg, #f8f6ef 0%, #f2f0e5 55%, #e8eadc 100%); }
+    .hero-grid { position: relative; z-index: 1; display: grid; align-items: center; gap: 2.4rem; }
+    .hero-copy { max-width: 600px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.1rem; border: 1px solid #d9dece; border-radius: 999px; padding: .42rem .8rem; background: rgba(255,255,255,.52); color: var(--olive); font-size: .8rem; font-weight: 700; }
+    .hero h1 { margin: 0 0 1.15rem; color: var(--olive-deep); font-family: Georgia, serif; font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 500; letter-spacing: -.065em; line-height: .99; }
+    .hero h1 span { color: var(--brown); font-style: italic; }
+    .hero-copy > p { max-width: 500px; margin: 0; color: #5d655a; font-size: 1.05rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.7rem; }
+    .hero-note { display: flex; align-items: center; gap: .65rem; margin-top: 1.7rem; color: var(--muted); font-size: .85rem; }
+    .hero-art { position: relative; width: min(100%, 530px); min-height: 335px; justify-self: center; overflow: hidden; border-radius: 48% 48% 1.4rem 1.4rem; background: linear-gradient(180deg, #e7ebdb 0%, #f2ead7 67%, #d9dfc9 100%); box-shadow: var(--shadow); }
+    .hero-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .art-stamp { position: absolute; right: 1rem; bottom: 1rem; display: flex; width: 6.6rem; height: 6.6rem; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(70,90,54,.22); border-radius: 50%; background: var(--paper); color: var(--olive); font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-align: center; transform: rotate(8deg); }
+    .art-stamp span { margin-bottom: .2rem; font-size: 1.4rem; }
+    .products-grid { display: grid; gap: 1rem; }
+    .product-card { position: relative; overflow: hidden; min-height: 235px; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; background: var(--paper); transition: transform .22s ease, box-shadow .22s ease; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .product-icon { display: grid; width: 3.45rem; height: 3.45rem; place-items: center; border-radius: 1rem; background: var(--olive-soft); font-size: 1.75rem; }
+    .product-card h3 { margin: 1.25rem 0 .45rem; color: var(--olive-deep); font-family: Georgia, serif; font-size: 1.5rem; font-weight: 600; }
+    .product-card p { max-width: 24rem; margin: 0; color: var(--muted); font-size: .94rem; }
+    .product-number { position: absolute; top: 1.45rem; right: 1.5rem; color: #687064; font-family: Georgia, serif; font-size: 1rem; }
+    .livestock { background: #efeee5; }
+    .livestock-grid { display: grid; gap: 1rem; }
+    .livestock-card { display: flex; min-height: 210px; align-items: flex-end; justify-content: space-between; gap: .5rem; overflow: hidden; border-radius: var(--radius); padding: 1.5rem; background: #fffefa; }
+    .livestock-card:nth-child(2) { background: #e7ebdf; }
+    .livestock-card h3 { margin: 0 0 .4rem; color: var(--olive-deep); font-family: Georgia, serif; font-size: 1.7rem; font-weight: 600; }
+    .livestock-card p { max-width: 20rem; margin: 0; color: #454c41; font-size: .92rem; }
+    .livestock-art { align-self: center; font-size: clamp(3.7rem, 9vw, 5.7rem); }
+    .care-note { display: flex; align-items: flex-start; gap: .75rem; margin-top: 1rem; border: 1px solid #e1dfd2; border-radius: 1rem; padding: 1rem 1.1rem; color: #596153; font-size: .9rem; }
+    .care-note svg { margin-top: .12rem; color: var(--brown); }
+    .kurban-section { padding-block: 4.5rem; background: var(--olive-deep); color: white; }
+    .kurban-inner { display: grid; align-items: center; gap: 1.8rem; }
+    .kurban-copy .eyebrow { color: #d9c18f; }
+    .kurban-copy h2 { max-width: 650px; margin: .65rem 0 .8rem; font-family: Georgia, serif; font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.1; }
+    .kurban-copy p { max-width: 580px; margin: 0; color: #d6ddcf; }
+    .kurban-types { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.3rem; }
+    .kurban-types span { border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: .45rem .8rem; color: #f1ead8; font-size: .84rem; font-weight: 650; }
+    .kurban-action { display: flex; max-width: 340px; flex-direction: column; align-items: flex-start; gap: .85rem; }
+    .kurban-action p { margin: 0; color: #d6ddcf; font-size: .86rem; }
+    .about-grid { display: grid; align-items: center; gap: 2.2rem; }
+    .about-art { position: relative; display: grid; min-height: 280px; place-items: center; overflow: hidden; border-radius: var(--radius); background: linear-gradient(155deg, #e8ebdf, #f0e6d2); }
+    .about-art span { z-index: 1; font-size: 6rem; }
+    .about-copy h2 { margin: .55rem 0 .9rem; color: var(--olive-deep); font-family: Georgia, serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.1; }
+    .about-copy p { color: var(--muted); }
+    .about-points { display: grid; gap: .65rem; margin: 1.3rem 0 0; padding: 0; list-style: none; }
+    .about-points li { display: flex; align-items: flex-start; gap: .65rem; color: #495347; font-size: .94rem; }
+    .about-points svg { margin-top: .18rem; color: var(--olive); }
+    .contact-section { background: #efeee5; }
+    .contact-section .section-heading p { color: #454c41; }
+    .contact-grid { display: grid; gap: 1.5rem; }
+    .contact-card, .contact-form { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; background: var(--paper); }
+    .contact-card h3, .contact-form h3 { margin: 0 0 .4rem; color: var(--olive-deep); font-family: Georgia, serif; font-size: 1.55rem; font-weight: 600; }
+    .contact-card > p, .contact-form > p { margin: 0 0 1.4rem; color: var(--muted); font-size: .92rem; }
+    .contact-list { display: grid; gap: 1rem; }
+    .contact-item { display: grid; grid-template-columns: 2.65rem 1fr; align-items: start; gap: .75rem; }
+    .contact-icon { display: grid; width: 2.55rem; height: 2.55rem; place-items: center; border-radius: .8rem; background: var(--olive-soft); color: var(--olive); }
+    .contact-item strong { display: block; margin: .05rem 0 .12rem; color: var(--ink); font-size: .9rem; }
+    .contact-item span, .contact-item a { color: var(--muted); font-size: .9rem; text-decoration: none; }
+    .contact-item a:hover { color: var(--olive); text-decoration: underline; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.4rem; }
+    .contact-form label { display: block; margin: .85rem 0 .35rem; color: #465044; font-size: .86rem; font-weight: 700; }
+    .contact-form input, .contact-form textarea { width: 100%; border: 1px solid #dcdfd4; border-radius: .8rem; padding: .8rem .9rem; outline: none; background: #fff; color: var(--ink); }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--olive); box-shadow: 0 0 0 3px rgba(70,90,54,.12); }
+    .contact-form textarea { min-height: 105px; resize: vertical; }
+    .contact-form .button { width: 100%; margin-top: 1rem; }
+    .form-note { margin: .7rem 0 0 !important; font-size: .78rem !important; }
+    .form-status { min-height: 1.4rem; margin: .55rem 0 0; color: var(--olive); font-size: .82rem; }
+    .site-footer { padding-block: 1.45rem; background: #263526; color: #e9eddf; }
+    .footer-inner { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: .5rem; }
+    .footer-inner p { margin: 0; color: #c6cfc0; font-size: .82rem; }
+    .footer-brand { font-family: Georgia, serif; font-size: 1.1rem; font-weight: 700; }
+    .mobile-whatsapp { display: none; }
+    @media (min-width: 680px) {
+      .container { width: min(100% - 3rem, 1160px); }
+      .hero { padding-block: 5.4rem; }
+      .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 2rem; }
+      .hero-art { min-height: 395px; }
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .livestock-grid { grid-template-columns: repeat(2, 1fr); }
+      .kurban-inner { grid-template-columns: 1fr auto; }
+      .about-grid { grid-template-columns: .95fr 1.05fr; gap: 3rem; }
+      .about-art { min-height: 370px; }
+      .contact-grid { grid-template-columns: .95fr 1.05fr; gap: 1.2rem; }
+      .contact-card, .contact-form { padding: 1.8rem; }
+      .footer-inner { flex-direction: row; align-items: center; }
+    }
+    @media (max-width: 679px) {
+      .section { padding-block: 4rem; }
+      .menu-toggle { display: grid; }
+      .nav { position: absolute; top: calc(100% + .45rem); left: 1rem; right: 1rem; display: none; align-items: stretch; gap: .2rem; border: 1px solid var(--line); border-radius: 1rem; padding: .55rem; background: var(--paper); box-shadow: var(--shadow); }
+      .nav.is-open { display: flex; flex-direction: column; }
+      .nav a { border-radius: .65rem; padding: .7rem .8rem; }
+      .nav .nav-cta { margin-top: .2rem; text-align: center; }
+      .hero { padding-block: 3.3rem 3.8rem; }
+      .hero-art { min-height: 290px; }
+      .contact-section { padding-bottom: 5rem; }
+      .mobile-whatsapp { position: fixed; z-index: 9; right: 1rem; bottom: 1rem; display: inline-flex; min-height: 3rem; align-items: center; gap: .55rem; border-radius: 999px; padding: .7rem 1rem; background: #426b42; box-shadow: 0 .4rem 1.5rem rgba(30,45,27,.25); color: white; font-size: .88rem; font-weight: 750; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    SITE_CONFIG
+    {
+      "businessName": "Fehmi Tümbül Çiftliği",
+      "phones": ["0536 654 32 14", "0506 101 74 82"],
+      "whatsappPhone": "905366543214",
+      "address": "Günyurdu Köyü, Tarsus, Mersin",
+      "email": ""
+    }
+    SITE_CONFIG
+  -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#anasayfa" aria-label="Fehmi Tümbül Çiftliği ana sayfa">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8m0 6C7 14 5 11 4 7c5 0 8 2 8 7Zm0-3c0-4 3-7 8-8 0 5-2 9-8 10"/><path d="M8 21h8"/></svg></span>
+        <span data-business-name>Fehmi Tümbül Çiftliği</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="Ana menü">
+        <a href="#urunler">Ürünlerimiz</a>
+        <a href="#hayvancilik">Hayvancılık</a>
+        <a href="#kurbanlik">Kurbanlık</a>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a class="nav-cta" href="#iletisim">Bize Ulaşın</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="anasayfa">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-tag"><span aria-hidden="true">✦</span> Günyurdu Köyü · Tarsus</div>
+          <h1>Topraktan<br><span>sofranıza.</span></h1>
+          <p>Aile çiftliğimizde emeğimizle yetişen zeytin, zeytinyağı ve peynir; özenle baktığımız küçükbaş ve büyükbaş hayvanlar.</p>
+          <div class="hero-actions">
+            <a class="button" href="#urunler">Ürünlerimizi keşfedin <span aria-hidden="true">→</span></a>
+            <a class="button button--outline" href="#iletisim">İletişime geçin</a>
+          </div>
+          <div class="hero-note"><span data-address>Günyurdu Köyü, Tarsus, Mersin</span></div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Zeytin ağaçları ve kırsal çiftlik manzarası">
+          <svg viewBox="0 0 600 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <circle cx="430" cy="104" r="49" fill="#d9b96f" opacity=".82"/>
+            <path d="M0 257 104 165l101 92 97-119 120 122 88-82 90 83v169H0Z" fill="#a9b592" opacity=".72"/>
+            <path d="m0 289 121-91 117 92 116-80 121 91 125-86v166H0Z" fill="#7f916c" opacity=".88"/>
+            <path d="M0 335c85-42 162-32 253 0 96 34 197 39 347-9v136H0Z" fill="#536c46"/>
+            <path d="M0 371c94-31 185-23 267 8 105 40 222 14 333-15v66H0Z" fill="#405b3b"/>
+            <g fill="#526a43">
+              <path d="M72 286v-78h13v78z"/><ellipse cx="79" cy="199" rx="39" ry="32"/><ellipse cx="53" cy="207" rx="26" ry="23"/><ellipse cx="105" cy="210" rx="25" ry="20"/>
+              <path d="M500 295v-96h15v96z"/><ellipse cx="507" cy="188" rx="46" ry="35"/><ellipse cx="477" cy="198" rx="27" ry="22"/><ellipse cx="535" cy="205" rx="26" ry="20"/>
+            </g>
+            <path d="m244 281 54-46 53 46v42H244Z" fill="#e4d8b7"/><path d="M234 279 298 224l64 55Z" fill="#795b3e"/><rect x="264" y="281" width="24" height="42" fill="#8a6948"/>
+          </svg>
+          <div class="art-stamp"><span aria-hidden="true">🌿</span>KÖYDEN<br>SOFRANIZA</div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="urunler">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Çiftliğimizden</span>
+          <h2>Ürünlerimiz</h2>
+          <p>Mevsiminde hasat edilen zeytinler ve çiftliğimizden gelen lezzetlerle sofranıza doğallık katıyoruz.</p>
+        </div>
+        <div class="products-grid">
+          <article class="product-card"><span class="product-number">01</span><div class="product-icon" aria-hidden="true">🫒</div><h3>Zeytin</h3><p>Dalından toplanan, sofralarınız için özenle hazırlanan zeytinler.</p></article>
+          <article class="product-card"><span class="product-number">02</span><div class="product-icon" aria-hidden="true">🫙</div><h3>Zeytinyağı</h3><p>Zeytinin kendine özgü aromasını taşıyan, mutfağınıza yakışan lezzet.</p></article>
+          <article class="product-card"><span class="product-number">03</span><div class="product-icon" aria-hidden="true">🧀</div><h3>Peynir</h3><p>Geleneksel sofraların sevilen eşlikçisi, çiftlikten peynir çeşitleri.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section livestock" id="hayvancilik">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Özenle yetiştiriyoruz</span>
+          <h2>Hayvancılık</h2>
+          <p>Hayvanlarımızın bakımını günlük emeğimizin ve çiftlik yaşamımızın bir parçası olarak görüyoruz.</p>
+        </div>
+        <div class="livestock-grid">
+          <article class="livestock-card"><div><h3>Küçükbaş</h3><p>Koyun ve keçi yetiştiriciliğimiz hakkında bilgi almak için bize ulaşın.</p></div><span class="livestock-art" aria-hidden="true">🐑</span></article>
+          <article class="livestock-card"><div><h3>Büyükbaş</h3><p>Büyükbaş hayvanlarımız ve çiftliğimiz hakkında detayları telefonla öğrenebilirsiniz.</p></div><span class="livestock-art" aria-hidden="true">🐄</span></article>
+        </div>
+        <div class="care-note"><span>Ürün ve hayvanlarımızla ilgili güncel bilgi, bulunurluk ve teslimat ayrıntıları için lütfen önceden iletişime geçin.</span></div>
+      </div>
+    </section>
+    <section class="kurban-section" id="kurbanlik">
+      <div class="container kurban-inner">
+        <div class="kurban-copy">
+          <span class="eyebrow">Kurbanlık satışı</span>
+          <h2>Kurbanlık için doğru bilgi, doğrudan çiftlikten.</h2>
+          <p>Küçükbaş ve büyükbaş kurbanlıklarımız hakkında bilgi almak, ziyaret planlamak ve uygunluk durumunu öğrenmek için bizi arayın.</p>
+          <div class="kurban-types"><span>🐑 Küçükbaş</span><span>🐄 Büyükbaş</span></div>
+        </div>
+        <div class="kurban-action">
+          <a class="button button--light" data-primary-tel href="#iletisim">Bizi arayın <span aria-hidden="true">→</span></a>
+          <p>Önemli: Çiftlik ziyareti ve kurbanlık seçimi için lütfen gelmeden önce telefonla arayın.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="hakkimizda">
+      <div class="container about-grid">
+        <div class="about-art" role="img" aria-label="Çiftlikte yetişen zeytin dalı"><span aria-hidden="true">🫒</span></div>
+        <div class="about-copy">
+          <span class="eyebrow">Biz kimiz?</span>
+          <h2>Toprağa bağlı, emeğe inanan bir aile çiftliği.</h2>
+          <p>Fehmi Tümbül ve ailesi olarak Tarsus'un Günyurdu Köyü'nde üretim yapıyor; zeytin, zeytinyağı ve peynir ürünlerimizi, hayvancılıkla birlikte çiftlik yaşamımızın bir parçası olarak sunuyoruz.</p>
+          <p>Ne aradığınızı konuşmak, ürünlerimiz ve çiftliğimiz hakkında bilgi almak için dilediğiniz zaman bize ulaşabilirsiniz.</p>
+          <ul class="about-points">
+            <li>✓ Aile emeğiyle üretim ve yetiştiricilik</li>
+            <li>✓ Tarsus, Günyurdu Köyü'nde yerel çiftlik</li>
+            <li>✓ Doğrudan çiftlikten bilgi ve iletişim</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="section contact-section" id="iletisim">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">İletişim</span>
+          <h2>Çiftliğimiz hakkında konuşalım.</h2>
+          <p>Ürünler, hayvancılık veya kurbanlıklarla ilgili sorularınız için bizi arayın ya da mesaj bırakın.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>İletişim bilgilerimiz</h3>
+            <p>Size yardımcı olmaktan memnuniyet duyarız.</p>
+            <div class="contact-list">
+              <div class="contact-item"><span class="contact-icon">☎</span><div><strong>Telefon</strong><div data-phone-list></div></div></div>
+              <div class="contact-item"><span class="contact-icon">⌖</span><div><strong>Adres</strong><span data-address>Günyurdu Köyü, Tarsus, Mersin</span></div></div>
+            </div>
+            <div class="contact-actions">
+              <a class="button" data-whatsapp href="#iletisim" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a class="button button--outline" data-email-link href="mailto:?subject=%C3%87iftlik%20hakk%C4%B1nda%20bilgi">E-posta taslağı aç</a>
+            </div>
+          </div>
+          <form class="contact-form" id="contact-form">
+            <h3>Bize mesaj gönderin</h3>
+            <p>Bilgilerinizi yazın, mesajınız WhatsApp'ta hazır açılsın.</p>
+            <label for="name">Adınız</label>
+            <input id="name" name="name" autocomplete="name" required placeholder="Adınızı yazın">
+            <label for="phone">Telefon numaranız</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="05xx xxx xx xx">
+            <label for="message">Mesajınız</label>
+            <textarea id="message" name="message" required placeholder="Size nasıl yardımcı olabiliriz?"></textarea>
+            <button class="button" type="submit">WhatsApp'tan mesaj oluştur <span aria-hidden="true">→</span></button>
+            <p class="form-note">Gönder düğmesi WhatsApp'ı açar; mesajı göndermeden önce kontrol edebilirsiniz.</p>
+            <p class="form-status" id="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-brand" data-business-name>Fehmi Tümbül Çiftliği</span>
+      <p><span data-address>Günyurdu Köyü, Tarsus, Mersin</span> · Aile emeğiyle, çiftliğimizden.</p>
+      <p>© <span id="year"></span> <span data-business-name>Fehmi Tümbül Çiftliği</span></p>
+    </div>
+  </footer>
+  <a class="mobile-whatsapp" data-whatsapp href="#iletisim" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile iletişim">◉ WhatsApp</a>
+  <script>
+    const comments = document.createTreeWalker(document, NodeFilter.SHOW_COMMENT);
+    let settingsComment;
+    while (comments.nextNode()) {
+      if (comments.currentNode.textContent.includes('SITE_CONFIG')) { settingsComment = comments.currentNode; break; }
+    }
+    const settingsMatch = settingsComment?.textContent.match(/SITE_CONFIG\s*([\s\S]*?)\s*SITE_CONFIG/);
+    const settings = settingsMatch ? JSON.parse(settingsMatch[1]) : null;
+    if (settings) {
+      const tel = (p) => `tel:+90${p.replace(/\D/g, '').replace(/^0/, '')}`;
+      document.title = `${settings.businessName} | Topraktan sofranıza`;
+      document.querySelectorAll('[data-business-name]').forEach((e) => { e.textContent = settings.businessName; });
+      document.querySelectorAll('[data-address]').forEach((e) => { e.textContent = settings.address; });
+      const phoneList = document.querySelector('[data-phone-list]');
+      settings.phones.forEach((phone, index) => {
+        const link = document.createElement('a');
+        link.href = tel(phone);
+        link.textContent = phone;
+        phoneList.append(link);
+        if (index < settings.phones.length - 1) phoneList.append(document.createElement('br'));
+      });
+      document.querySelectorAll('[data-whatsapp]').forEach((l) => { l.href = `https://wa.me/${settings.whatsappPhone}`; });
+      document.querySelector('[data-primary-tel]').href = tel(settings.phones[0]);
+      if (settings.email) document.querySelector('[data-email-link]').href = `mailto:${settings.email}`;
+      document.querySelector('#year').textContent = new Date().getFullYear();
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navigation = document.querySelector('#site-nav');
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? 'Menüyü aç' : 'Menüyü kapat');
+        navigation.classList.toggle('is-open', !isOpen);
+      });
+      navigation.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navigation.classList.remove('is-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Menüyü aç');
+        });
+      });
+      document.querySelector('#contact-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const message = [`Merhaba, ben ${form.get('name')}.`, `Telefonum: ${form.get('phone')}`, `Mesajım: ${form.get('message')}`].join('\n');
+        window.open(`https://wa.me/${settings.whatsappPhone}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+        document.querySelector('#form-status').textContent = 'Mesajınız WhatsApp için hazırlandı. Göndermeden önce kontrol edebilirsiniz.';
+      });
+    }
+  </script>
+</body>
+</html>
