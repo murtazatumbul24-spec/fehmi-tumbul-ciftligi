@@ -56,6 +56,27 @@
   });
   nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
+  /* Galeriye fotoğraf eklemek için bu listeye bir satır ekleyin. */
+  const extraPhotos = [
+    { src: 'https://customer-assets-v7afamib.emergentagent.net/wingman/11ca4e3b-ba49-4a88-9d04-02a1afc74f6c/attachments/e88e96b30cb44aee869952e87e455159_image.jpeg', alt: 'Sarı ulak zeytinlerinin yıkama makinesinde temizlenmesi' },
+    { src: 'https://customer-assets-v7afamib.emergentagent.net/wingman/11ca4e3b-ba49-4a88-9d04-02a1afc74f6c/attachments/837c07c40c0f4e3ba152920866aaa799_IMG_1016.jpeg', alt: 'Dağlarla çevrili köyde otlayan inekler (temsili görsel)' }
+  ];
+  const galleryGrid = document.querySelector('.gallery-grid');
+  extraPhotos.forEach((photo, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'gallery-item';
+    button.setAttribute('aria-label', `${photo.alt} fotoğrafını büyüt`);
+    const img = document.createElement('img');
+    img.src = photo.src;
+    img.alt = photo.alt;
+    img.loading = 'lazy';
+    const label = document.createElement('span');
+    label.textContent = `0${index + 5} `;
+    label.insertAdjacentHTML('beforeend', '<svg class="icon"><use href="#plus"/></svg>');
+    button.append(img, label);
+    galleryGrid.append(button);
+  });
   const dialog = document.querySelector('#lightbox');
   const dialogImage = dialog.querySelector('img');
   let opener;
