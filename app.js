@@ -93,3 +93,31 @@ if (settings) {
     revealItems.forEach((element) => element.classList.add('is-visible'));
   }
 }
+
+/* Galeri fotoğrafları: yeni fotoğraf eklemek için bu listeye bir satır ekleyin. */
+const galleryPhotos = [
+  { src: 'https://customer-assets-v7afamib.emergentagent.net/wingman/11ca4e3b-ba49-4a88-9d04-02a1afc74f6c/attachments/7bfede1f16a94fdf86b3ef1be5bd9884_c3464a34-6172-4dee-82f4-3a6c20c46bf9.jpeg', alt: 'Taze toplanmış yeşil zeytinler', label: 'Taze yeşil zeytin' },
+  { src: 'https://customer-assets-v7afamib.emergentagent.net/wingman/11ca4e3b-ba49-4a88-9d04-02a1afc74f6c/attachments/55859047bcb44348befeb0b13abf8af6_930123db-037b-4b12-b6e2-bfd83ff624c3.jpeg', alt: 'Yeşil ve mor renkli hasat edilmiş zeytinler', label: 'Zeytin hasadı' },
+  { src: 'https://customer-assets-v7afamib.emergentagent.net/wingman/11ca4e3b-ba49-4a88-9d04-02a1afc74f6c/attachments/731f91e39839439497ac5877cbfa25f7_3cd07f26-03be-454f-ac5b-1d930cec2d91.jpeg', alt: 'Dalında olgunlaşan zeytinler', label: 'Zeytinliğimiz' },
+  { src: 'https://customer-assets-v7afamib.emergentagent.net/wingman/11ca4e3b-ba49-4a88-9d04-02a1afc74f6c/attachments/9804b4cd0abc4eb2ad0aa899f8efaa9f_6c48bf24-2f9c-45c4-90ae-83da455396b3.jpeg', alt: 'Zeytin ağacı dalında mor zeytinler', label: 'Zeytin ağaçları' },
+  { src: 'https://customer-assets-v7afamib.emergentagent.net/wingman/11ca4e3b-ba49-4a88-9d04-02a1afc74f6c/attachments/d4152c5be9774cb3ab9b838beffd898f_1000006609_Original.jpeg', alt: 'Meradaki büyükbaş hayvanlar', label: 'Çiftlik yaşamı' }
+];
+const galleryGrid = document.querySelector('.gallery-grid');
+if (galleryGrid) {
+  galleryGrid.textContent = '';
+  galleryPhotos.forEach((photo) => {
+    const tile = document.createElement('article');
+    tile.className = 'gallery-tile';
+    const img = document.createElement('img');
+    img.src = photo.src;
+    img.alt = photo.alt;
+    img.loading = 'lazy';
+    const label = document.createElement('span');
+    label.className = 'gallery-label';
+    label.textContent = photo.label;
+    tile.append(img, label);
+    galleryGrid.append(tile);
+  });
+  const galleryNote = document.querySelector('.gallery-note');
+  if (galleryNote) galleryNote.remove();
+}
