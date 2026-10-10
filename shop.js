@@ -152,14 +152,8 @@
       const variety = id === 'olive' && item.choice ? ` (çeşit tercihi: ${item.choice})` : '';
       return `• ${products[id].name} — ${item.quantity} ${units[item.unit] || 'birim'}${variety}`;
     });
-    let message = `Merhaba, sipariş vermek istiyorum.
-
-Sipariş listem:
-${lines.join('
-')}`;
-    if (state.note.trim()) message += `
-
-Not: ${state.note.trim()}`;
+    let message = `Merhaba, sipariş vermek istiyorum.\n\nSipariş listem:\n${lines.join('\n')}`;
+    if (state.note.trim()) message += `\n\nNot: ${state.note.trim()}`;
     const link = document.createElement('a');
     link.href = window.makeWhatsappUrl(message);
     link.target = '_blank';
