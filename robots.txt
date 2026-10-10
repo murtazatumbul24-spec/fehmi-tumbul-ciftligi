@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://murtazatumbul24-spec.github.io/fehmi-tumbul-ciftligi/sitemap.xml
