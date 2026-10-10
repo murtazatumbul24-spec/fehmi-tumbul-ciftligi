@@ -1,0 +1,11 @@
+const CACHE = 'fehmi-shell-v2';
+const SHELL = ['./', './index.html', './base.css', './sections.css', './responsive.css', './content-1.html', './content-2.html', './content-3.html', './content-4.html', './content.js', './translations-1.js', './translations-2.js', './app.js', './shop.js', './i18n.js', './manifest.webmanifest', './icon.svg'];
+self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting())));
+self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())));
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
+  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
+    if (response.ok) caches.open(CACHE).then(cache => cache.put(event.request, response.clone()));
+    return response;
+  }).catch(() => caches.match('./index.html'))));
+});
