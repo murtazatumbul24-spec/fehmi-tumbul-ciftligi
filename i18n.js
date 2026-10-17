@@ -8,6 +8,7 @@
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach(node => { const value = t(node.dataset.i18n); if (value.includes('<')) node.innerHTML = value; else node.textContent = value; });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(node => node.setAttribute('placeholder', t(node.dataset.i18nPlaceholder)));
+    document.querySelectorAll('[data-i18n-alt]').forEach(node => node.setAttribute('alt', t(node.dataset.i18nAlt)));
     document.querySelectorAll('[data-i18n-aria-label]').forEach(node => node.setAttribute('aria-label', t(node.dataset.i18nAriaLabel)));
     const button = document.querySelector('#language-toggle');
     if (button) { button.textContent = lang === 'tr' ? 'EN' : 'TR'; button.setAttribute('aria-label', lang === 'tr' ? 'Switch to English' : 'Türkçeye geç'); }
