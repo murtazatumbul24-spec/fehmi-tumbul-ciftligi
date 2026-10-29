@@ -59,6 +59,8 @@
     const target = lightbox.querySelector('img');
     target.src = image.currentSrc || image.src;
     target.alt = image.alt;
+    target.width = image.width;
+    target.height = image.height;
     lightbox.querySelector('figcaption').textContent = window.t(button.dataset.captionKey);
     lightbox.querySelector('.lightbox-count').textContent = `${currentPicture + 1} / ${pictures.length}`;
   };
@@ -90,8 +92,8 @@
   document.querySelector('#sacrifice-form').addEventListener('submit', event => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const date = form.get('date') || 'Esnek';
-    const message = `Merhaba, kurbanlık talebim hakkında bilgi almak istiyorum.\nHayvan tercihi: ${form.get('animal')}\nAdet: ${form.get('count')}\nTercih edilen tarih: ${date}\nBölge / teslimat notu: ${form.get('region') || 'Belirtilmedi'}\nAd: ${form.get('name')}\nTelefon: ${form.get('phone')}`;
+    const extra = String(form.get('region') || '').trim();
+    const message = `Merhaba, kurbanlık hakkında bilgi almak istiyorum.\nHayvan tercihi: ${form.get('animal')}\nTelefon: ${form.get('phone')}${extra ? `\nEk not: ${extra}` : ''}`;
     const link = document.createElement('a');
     link.href = window.makeWhatsappUrl(message);
     link.target = '_blank';
@@ -132,7 +134,11 @@
   addEventListener('beforeinstallprompt', event => {
     event.preventDefault();
     installPrompt = event;
-    installHint.hidden = false;
+    try { installHint.hidden = sessionStorage.getItem('farm-install-dismissed') === 'yes'; } catch { installHint.hidden = false; }
+  });
+  document.querySelector('#install-dismiss').addEventListener('click', () => {
+    installHint.hidden = true;
+    try { sessionStorage.setItem('farm-install-dismissed', 'yes'); } catch {}
   });
   document.querySelector('#install-button').addEventListener('click', async () => {
     if (!installPrompt) return;
