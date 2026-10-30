@@ -19,7 +19,9 @@
       if (phone) { node.textContent = phone; node.href = `tel:${tel(phone)}`; }
     });
     document.querySelectorAll('[data-primary-tel]').forEach(node => { node.href = `tel:${tel(config.phones[0])}`; });
-    document.querySelectorAll('[data-whatsapp]').forEach(node => { node.href = whatsapp(node.dataset.message || ''); node.target = '_blank'; node.rel = 'noopener noreferrer'; });
+    const updateWhatsappLinks = () => document.querySelectorAll('[data-whatsapp]').forEach(node => { node.href = whatsapp(node.dataset.messageKey ? window.t(node.dataset.messageKey) : node.dataset.message || ''); node.target = '_blank'; node.rel = 'noopener noreferrer'; });
+    updateWhatsappLinks();
+    document.addEventListener('languagechange', updateWhatsappLinks);
     const schema = document.querySelector('#site-schema');
     if (schema) {
       const data = JSON.parse(schema.textContent);
